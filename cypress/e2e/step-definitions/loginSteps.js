@@ -32,11 +32,18 @@ Given("I type the user name {string}", (user) => {
   loginPage.typeUser(user);
  });
 
- Given("I type the password {string}", (password) => {
+Given("I type the password {string}", (password) => {
   loginPage.typePassword(password);
  });
 
+ Given("Check that the error message is {string}", (errorText) => {
+  loginPage.checkErrorMessageIsContained(errorText);
+ });
 
-
-
+ Given("the {string} text box is cleared", (textBoxIdentify) => {
+  loginPage.clearTextBox(textBoxIdentify);
+ });  
+ Given("Check that the error message {string} is not contained", (errorText) => {
+  loginPage.checkErrorMessageIsNotContained(errorText);
+ }); 
 

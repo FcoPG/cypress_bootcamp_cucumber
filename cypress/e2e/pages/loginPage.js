@@ -1,6 +1,8 @@
 import { CommonPage } from "./commonPage";
 
 const usernameLocator = '[data-test="username"]'
+const errorMessageContainerLocator = 'error-message-container'
+const errorbuttonLocator = '[class="error-button]'
 
 export class LoginPage extends CommonPage{
 
@@ -29,6 +31,7 @@ export class LoginPage extends CommonPage{
     cy.url().should('include', 'inventory.html');
     cy.get('[data-test="primary-header"]').should('contain', 'Swag Labs');
   }
+  
 
   //BETTER PRACTICES
 
@@ -40,4 +43,12 @@ export class LoginPage extends CommonPage{
  typePassword (password) {
   cy.get('[data-test="password"]').type(password);
  }
+
+  checkErrorMessageIsContained(text) {
+    this.checkElementByClassContains(errorMessageContainerLocator, text);
+  }
+
+  checkErrorMessageIsNotContained(text) {
+    this.checkElementByClassNotContains(errorMessageContainerLocator, text);
+  }
 }

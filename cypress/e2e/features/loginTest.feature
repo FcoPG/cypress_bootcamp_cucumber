@@ -31,3 +31,43 @@ Scenario: simple login
   When I click on the button with data-test "login-button"
   Then I check that the url include the endpoint "inventory.html"
 
+Scenario Outline: Check all acepted usernames Scenario Outline
+    Given I type the user name "<username>"
+    And I type the password "<password>"
+    When I click on the button with data-test "login-button"
+    Then I check that the url include the endpoint "inventory.html"
+
+    Examples:
+      | username                | password     |
+      | standard_user           | secret_sauce |
+      | problem_user            | secret_sauce |
+      | performance_glitch_user | secret_sauce |
+      | error_user              | secret_sauce |
+      | visual_user             | secret_sauce |
+
+Scenario: Check the errors login messages - Epic sadface: Username is required, Epic sadface: Password is required  
+    Given I type the password "secret_sauce"
+    When I click on the button with data-test "login-button"
+    Then Check that the error message is "Epic sadface: Username is required"
+    And the "password" text box is cleared
+    And I click on the button with data-test "error-button"
+    And Check that the error message "Epic sadface: Username is required" is not contained
+    Given I type the user name "standard_user"
+    When I click on the button with data-test "login-button"
+    Then Check that the error message is "Epic sadface: Password is required"
+
+Scenario: Check error login message -  Epic sadface: Username and password do not match any user in this service
+    Given I type the user name "standard_use"
+    And I type the password "secret"
+    When I click on the button with data-test "login-button"
+    Then Check that the error message is "Epic sadface: Username and password do not match any user in this service"
+     
+Scenario: Check error login message - Epic sadface: Sorry, this user has been locked out.
+    Given I type the user name "locked_out_user"
+    And I type the password "secret_sauce"
+    When I click on the button with data-test "login-button"
+    Then Check that the error message is "Epic sadface: Sorry, this user has been locked out."
+
+
+
+ 

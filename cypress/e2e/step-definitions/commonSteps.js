@@ -25,5 +25,17 @@ Given("I visit {string}", (url) => {
  Given("I type in the text box with data test {string} the text {string}", (texBoxByDataText, text) => {
   commonPage.typeInTextBoxByDataTest(texBoxByDataText, text);
  });
+
+ Given("I click on the element with class {string}", (elementByClass) => {
+  commonPage.clickElementByClass(elementByClass);
+ });
+
+ Given("Check the text {string} is contained in the body", (text) => { 
+  commonPage.checkTextContainInBody(text);
+ });
+
+ Given("Check the text {string} is not contained in the body", (text) => { 
+  commonPage.checkTextNotContainInBody(text);
+ });
  
 
