@@ -51,4 +51,16 @@ export class LoginPage extends CommonPage{
   checkErrorMessageIsNotContained(text) {
     this.checkElementByClassNotContains(errorMessageContainerLocator, text);
   }
+
+  loginKeepSession() {
+    cy.session("loginSession", () => {
+      cy.visit("https://www.saucedemo.com/"); // Visita la URL de inicio de sesión
+      this.correctLogin()
+      cy.url().should("eq", "https://www.saucedemo.com/inventory.html"); // Verifica que se redirige a la página correcta
+    });
+    cy.visit("https://www.saucedemo.com/inventory.html", {
+      failOnStatusCode: false,
+    });
+    cy.url().should("include", "/inventory.html");
+  }
 }

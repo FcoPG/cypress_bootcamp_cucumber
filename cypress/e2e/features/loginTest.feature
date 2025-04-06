@@ -48,25 +48,26 @@ Scenario Outline: Check all acepted usernames Scenario Outline
 Scenario: Check the errors login messages - Epic sadface: Username is required, Epic sadface: Password is required  
     Given I type the password "secret_sauce"
     When I click on the button with data-test "login-button"
-    Then Check that the error message is "Epic sadface: Username is required"
+    Then Check that the error message "Epic sadface: Username is required" is contained
     And the "password" text box is cleared
     And I click on the button with data-test "error-button"
     And Check that the error message "Epic sadface: Username is required" is not contained
     Given I type the user name "standard_user"
     When I click on the button with data-test "login-button"
-    Then Check that the error message is "Epic sadface: Password is required"
+    Then Check that the error message "Epic sadface: Password is required" is contained
 
 Scenario: Check error login message -  Epic sadface: Username and password do not match any user in this service
     Given I type the user name "standard_use"
     And I type the password "secret"
+    And Check that the error message "Epic sadface: Username and password do not match any user in this service" is not contained
     When I click on the button with data-test "login-button"
-    Then Check that the error message is "Epic sadface: Username and password do not match any user in this service"
+    Then Check that the error message "Epic sadface: Username and password do not match any user in this service" is contained
      
-Scenario: Check error login message - Epic sadface: Sorry, this user has been locked out.
+Scenario: Check error message locked_out_user login - Epic sadface: Sorry, this user has been locked out.
     Given I type the user name "locked_out_user"
     And I type the password "secret_sauce"
     When I click on the button with data-test "login-button"
-    Then Check that the error message is "Epic sadface: Sorry, this user has been locked out."
+    Then Check that the error message "Epic sadface: Sorry, this user has been locked out." is contained
 
 
 

@@ -36,7 +36,7 @@ Given("I type the password {string}", (password) => {
   loginPage.typePassword(password);
  });
 
- Given("Check that the error message is {string}", (errorText) => {
+ Given("Check that the error message {string} is contained", (errorText) => {
   loginPage.checkErrorMessageIsContained(errorText);
  });
 
@@ -47,3 +47,8 @@ Given("I type the password {string}", (password) => {
   loginPage.checkErrorMessageIsNotContained(errorText);
  }); 
 
+ 
+ //session
+Given("I login and keep the sesion for the standar_user", () => {
+  loginPage.loginKeepSession();
+});

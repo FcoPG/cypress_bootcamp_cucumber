@@ -13,7 +13,7 @@ export class CommonPage{
 
    //Gets
    getElementByClass (elementByClass) {
-    return cy.get(`.${elementByClass}`)
+    return cy.get(`[class="${elementByClass}"]`)
    }
 
    getElementByDataTest (elementByDataTest) {
@@ -30,7 +30,7 @@ export class CommonPage{
    }
 
    clickButtonByDataTest(buttonByDataTest) {
-    cy.get(`[data-test="${buttonByDataTest}"]`).click();
+    this.getElementByDataTest(buttonByDataTest).click()
   }
 
    clickElementByContent (elementByText) {
@@ -79,4 +79,33 @@ export class CommonPage{
    clearTextBox(elementByDataTest) {
     this.getElementByDataTest(elementByDataTest).clear()
    }
- }
+
+   //Assertions
+   checkElementByDataTestShould(elementByDataTest, assertion) {
+    this.getElementByDataTest(elementByDataTest).should(assertion)
+   }
+
+   checkElementByClassShould(elementByClass, assertion) {
+    this.getElementByDataTest(elementByClass).should(assertion)
+   }
+
+   checkElementByDataTestShouldNumber(elementByDataTest, assertion, number) {
+    this.getElementByDataTest(elementByDataTest).should(assertion, number)
+   }
+
+
+  /// Función para testear accesibilidad
+  testAccesibilityInScreen () {
+    cy.injectAxe();
+    cy.checkA11y();
+  }
+
+  testAccesibilityOnElement (elementLocator) {
+    cy.injectAxe();
+    cy.checkA11y(elementLocator)
+  }
+  
+ 
+ 
+ 
+  }
