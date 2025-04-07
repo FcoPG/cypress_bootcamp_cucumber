@@ -134,7 +134,7 @@ describe("User GET request", () => {
         
     });   
 
-    it.only("Level 1, PUT", () => {
+    it("Level 1, PUT", () => {
         const postDataTest = {
             "name": "testNamePost",
             "data": {

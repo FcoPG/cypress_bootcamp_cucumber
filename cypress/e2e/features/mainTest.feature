@@ -13,7 +13,8 @@ Feature: Main Test
         And I click on the button with data-test "back-to-products"
         Then I check that the element with data-test "shopping-cart-badge" should "not.exist"
         And I check that the url doesn't include the endpoint "?id="
-
+    
+    @smoke
     Scenario: order products from lowest to highest price and check that the first product is the cheapest and the last product is the most expensive
         Given I select the option "Price (low to high)" in the dropdown
         And I check that the first product in the product list contain "Sauce Labs Onesie"

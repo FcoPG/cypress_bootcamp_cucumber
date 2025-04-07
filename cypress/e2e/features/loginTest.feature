@@ -5,7 +5,8 @@ Feature: Login test suite
 Background:
 #Esto es equivalente al beforeEach
  Given I visit "https://www.saucedemo.com/"
- 
+
+@smoke
 # Los Scenarios son los tests (lo que antes era "it")
  Scenario: login happy path
   Given I type standar user in login page
@@ -30,7 +31,7 @@ Scenario: simple login
   And I check that the url doesn't include the endpoint "inventory.html"
   When I click on the button with data-test "login-button"
   Then I check that the url include the endpoint "inventory.html"
-
+@smoke
 Scenario Outline: Check all acepted usernames Scenario Outline
     Given I type the user name "<username>"
     And I type the password "<password>"

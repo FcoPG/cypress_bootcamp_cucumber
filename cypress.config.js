@@ -18,6 +18,7 @@ e2e: {
   return config;
   },
   specPattern: ['cypress/e2e/**/*.feature', 'cypress/e2e/basic-tests/*.js']
+  // specPattern: 'cypress/e2e/**/*.feature' //no sale los basic-tests en cypress run
   /*
   Para encontrar los archivos de tests, si queremos que también encuentre
   archivos .js
