@@ -1,3 +1,4 @@
+@main
 Feature: Main Test  
  
     Background: 
