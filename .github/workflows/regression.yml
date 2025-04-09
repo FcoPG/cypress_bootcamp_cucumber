@@ -1,4 +1,4 @@
-name: Cypress Regression Tests with schedule
+name: Cypress Regression Tests
 
 on:
   schedule:
@@ -23,11 +23,12 @@ jobs:
 
     - name: Upload report artifact
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: mochawesome-report
         path: cypress/reports/html/index.html
-        retention-days: 30 # mantiene el reporte durante 30 dias
-        if-no-files-found: warn # si no se crea el reporte manda un warning
+        retention-days: 30
+        if-no-files-found: warn
 
       env:
         CI: true
