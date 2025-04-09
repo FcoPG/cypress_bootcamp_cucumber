@@ -1,10 +1,12 @@
 name: Cypress basic-tests Tests
 
 on:
-  workflow_dispatch:
+    schedule:
+    - cron: '58 17 * * *' #ejecuta la pipeline todos los días a hora UTC
+    workflow_dispatch:
 
 jobs:
-  cypress-basictests:
+  cypress-basictests: #nombre de la pipipeline
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository
@@ -25,8 +27,8 @@ jobs:
       with:
         name: mochawesome-report
         path: cypress/reports/html/index.html
-        retention-days: 30
-        if-no-files-found: warn
+        retention-days: 30 #el reporte se guardará por 30 días
+        if-no-files-found: warn #si no se creó el reporte, no se generará un error/warning en la pipeline
 
       env:
         CI: true
