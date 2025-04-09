@@ -1,4 +1,5 @@
 node_modules
 cypress/e2e/basicCypress
-
+cypress/reports
+cypress/screenshots
 
