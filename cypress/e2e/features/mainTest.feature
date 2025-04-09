@@ -5,6 +5,7 @@ Feature: Main Test
         Given I login and keep the sesion for the standar_user
 
     #ejercico 24/03/2025
+    @regression
     Scenario: Insert in product details and go back, check that product is not added to cart
         Given I check that the element with data-test "shopping-cart-badge" should "not.exist"
         And I check that the element with data-test "add-to-cart-sauce-labs-bolt-t-shirt" should "be.visible"
